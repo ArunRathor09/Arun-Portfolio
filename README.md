@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # <a href="https://vinodjangid07.github.io/" target="_blank">My Portfolio</a>
 <p align="justify">This website displays my Projects, Web presence, Story, Work experience, and contact information.</p>
 
@@ -37,3 +38,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](./LICENSE)
 
 
 Please contact me at infovinodjangid@gmail.com if you have any feedback for the website. :star: Star it, if you like it!
+=======
+# Arun-Portfolio
+My personal portfolio website showcasing my skills, projects, experience, and achievements. Built with modern web technologies to highlight my work and provide an easy way to connect with me.
+>>>>>>> c76c604cf7a08ecf85172b801578269415f2f1c8
