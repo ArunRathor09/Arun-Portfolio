@@ -1,0 +1,2536 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="theme-color" content="#000" />
+
+  <!-- SEO -->
+  <meta name="description"
+    content="Arun Rathor is a Full Stack Developer (MERN, Next.js, TypeScript) building modern, responsive and scalable web applications." />
+  <meta name="author" content="Arun Rathor" />
+  <meta name="keywords"
+    content="Arun Rathor, Full Stack Developer, MERN, React, Next.js, Node.js, Portfolio" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Arun Rathor | Full Stack Developer" />
+  <meta property="og:description"
+    content="Portfolio of Arun Rathor — Full Stack Developer building modern and scalable web applications." />
+  <meta property="og:type" content="website" />
+
+  <title>Arun Rathor | Full Stack Developer</title>
+
+  <link rel="icon" type="image/x-icon" href="src/png/main-favicon.png" />
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Passions+Conflict&family=Orbitron&family=Fira+Code&family=Six+Caps&family=Inter:wght@400;500;600&display=swap" />
+
+  <!-- =====================================================
+       ENHANCEMENTS (loads AFTER style.css on purpose)
+       Uses semi-transparent colors so it works in light + dark mode.
+       Change --accent to match your theme.
+  ====================================================== -->
+  <style>
+    :root {
+      --accent: #7c5cff;
+      --accent-2: #00d4ff;
+      --glass: rgba(128, 128, 128, 0.10);
+      --glass-border: rgba(128, 128, 128, 0.25);
+      --radius: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    section[id] {
+      scroll-margin-top: 90px;
+    }
+
+    /* ---------- Scroll progress bar ---------- */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 99999;
+      transition: width 0.1s linear;
+    }
+
+    /* ---------- Hero ---------- */
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      margin: 14px 0 6px;
+      border-radius: 999px;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      font-family: "Fira Code", monospace;
+      font-size: 0.85rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .role-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      70% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+      }
+    }
+
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 22px 0 8px;
+    }
+
+    .hero-stats .stat {
+      min-width: 120px;
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .hero-stats .stat:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .stat-num,
+    .stat-plus {
+      font-family: "Orbitron", sans-serif;
+      font-size: 1.6rem;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .stat-label {
+      flex-basis: 100%;
+      font-size: 0.78rem;
+      opacity: 0.75;
+      margin-top: 4px;
+    }
+
+    .ghost-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--glass-border);
+      background: var(--glass);
+      color: inherit;
+      text-decoration: none;
+      font-weight: 500;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .ghost-btn:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      background: rgba(124, 92, 255, 0.15);
+    }
+
+    .contact-btn-div {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* ---------- Chips / tags ---------- */
+    .tag-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+
+    .tag-chips span {
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-family: "Fira Code", monospace;
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .tag-chips span:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ---------- About cards ---------- */
+    .about-cards {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .about-card {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 16px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .about-card:hover {
+      transform: translateX(6px);
+      border-color: var(--accent);
+    }
+
+    .about-card-icon {
+      font-size: 1.6rem;
+    }
+
+    .about-card h4 {
+      margin: 0 0 2px;
+      font-size: 1rem;
+    }
+
+    .about-card p {
+      margin: 0;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* ---------- Experience timeline ---------- */
+    .experience-section-container {
+      padding: 80px 5% 40px;
+    }
+
+    .experience-section {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline {
+      position: relative;
+      margin-top: 40px;
+      padding-left: 34px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(var(--accent), var(--accent-2), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -34px;
+      top: 22px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(124, 92, 255, 0.25);
+    }
+
+    .timeline-card {
+      padding: 22px 24px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 40px rgba(124, 92, 255, 0.18);
+    }
+
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .timeline-head h3 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .timeline-date {
+      font-family: "Fira Code", monospace;
+      font-size: 0.8rem;
+      opacity: 0.75;
+    }
+
+    .timeline-company {
+      margin: 4px 0 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .timeline-card ul {
+      margin: 0 0 6px;
+      padding-left: 18px;
+      line-height: 1.65;
+      font-size: 0.93rem;
+      opacity: 0.92;
+    }
+
+    /* ---------- Skill groups ---------- */
+    .skill-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 40px;
+    }
+
+    .skill-group {
+      padding: 20px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .skill-group:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent);
+    }
+
+    .skill-group h4 {
+      margin: 0 0 6px;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* ---------- Projects ---------- */
+    .project-box {
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .project-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(124, 92, 255, 0.18);
+    }
+
+    .image-div img {
+      transition: transform 0.5s ease;
+    }
+
+    .project-box:hover .image-div img {
+      transform: scale(1.04);
+    }
+
+    .more-projects-heading {
+      text-align: center;
+      margin: 60px 0 24px;
+      font-family: "Orbitron", sans-serif;
+    }
+
+    .mini-projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .mini-project {
+      padding: 22px;
+      border-radius: var(--radius);
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mini-project:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 40px rgba(124, 92, 255, 0.18);
+    }
+
+    .mini-project h4 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .mini-project p {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    /* ---------- Contact ---------- */
+    .contact-section-container {
+      padding: 80px 5% 100px;
+    }
+
+    .contact-section {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-lead {
+      margin: 24px auto 30px;
+      line-height: 1.8;
+      opacity: 0.88;
+      max-width: 620px;
+    }
+
+    .contact-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .contact-primary {
+      padding: 13px 26px;
+      border-radius: 999px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .contact-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(124, 92, 255, 0.4);
+    }
+
+    /* ---------- Accessibility & motion ---------- */
+    a:focus-visible,
+    button:focus-visible,
+    label:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* ---------- Mobile ---------- */
+    @media (max-width: 640px) {
+      .hero-stats .stat {
+        min-width: 100px;
+        flex: 1;
+      }
+
+      .timeline {
+        padding-left: 28px;
+      }
+
+      .timeline-dot {
+        left: -28px;
+      }
+
+      .timeline-card {
+        padding: 18px;
+      }
+
+      .experience-section-container,
+      .contact-section-container {
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+    }
+  </style>
+</head>
+
+<body class="body has-announcement">
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <noscript>Please enable JavaScript to view this website properly.</noscript>
+
+  <!-- ================= ANNOUNCEMENT BAR ================= -->
+
+  <div class="announcement-bar" id="announcement-bar">
+    <div class="announcement-content">
+      <span class="announcement-emoji">🚀</span>
+
+      <span class="announcement-text">
+        Open to Full Stack / MERN opportunities — let's build something great together.
+      </span>
+    </div>
+  </div>
+
+  <!-- ================= HEADER ================= -->
+
+  <header>
+
+    <div class="cursor-inner" id="cursor-inner"></div>
+    <div class="cursor-outer" id="cursor-outer"></div>
+
+    <div class="navbar" id="navbar">
+
+      <div class="hey">Hey!</div>
+
+      <div class="logo" tabindex="0" aria-label="Arun Rathor logo">
+
+        <div class="logo-top">
+          <img
+            src="src/png/nav-avatar.png"
+            alt="Arun Rathor"
+            id="nav-avatar"
+          />
+        </div>
+
+      </div>
+
+      <!-- Desktop Navigation -->
+
+      <div class="navbar-tabs" id="navbar-tabs">
+
+        <ul class="navbar-tabs-ul">
+
+          <li
+            class="home activeThistab navbar-tabs-li"
+            data-aos="fade-down"
+            data-aos-delay="100"
+          >
+            <a
+              href="#home"
+              tabindex="0"
+              aria-label="Home menu button"
+            >
+              &#60;/Home&#62;
+            </a>
+          </li>
+
+          <li
+            class="about navbar-tabs-li"
+            data-aos="fade-down"
+            data-aos-delay="250"
+          >
+            <a
+              href="#about"
+              aria-label="About menu button"
+            >
+              &#60;/AboutMe&#62;
+            </a>
+          </li>
+
+          <li
+            class="experience navbar-tabs-li"
+            data-aos="fade-down"
+            data-aos-delay="400"
+          >
+            <a
+              href="#experience"
+              aria-label="Experience menu button"
+            >
+              &#60;/Experience&#62;
+            </a>
+          </li>
+
+          <li
+            class="skills navbar-tabs-li"
+            data-aos="fade-down"
+            data-aos-delay="550"
+          >
+            <a
+              href="#skills"
+              aria-label="Skills menu button"
+            >
+              &#60;/Skills&#62;
+            </a>
+          </li>
+
+          <li
+            class="projects navbar-tabs-li"
+            data-aos="fade-down"
+            data-aos-delay="700"
+          >
+            <a
+              href="#projects"
+              aria-label="Projects menu button"
+            >
+              &#60;/Projects&#62;
+            </a>
+          </li>
+
+          <li
+            class="contact navbar-tabs-li"
+            data-aos="fade-down"
+            data-aos-delay="850"
+          >
+            <a
+              href="#contact"
+              aria-label="Contact menu button"
+            >
+              &#60;/Contact&#62;
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <!-- ================= MAIN ================= -->
+
+  <main>
+
+    <!-- Mobile Hamburger -->
+
+    <div class="hamburger" id="hamburger" data-aos="fade">
+
+      <div class="hamburgerbase">
+
+        <button
+          id="hamburger-button"
+          onclick="hamburgerMenu()"
+          tabindex="0"
+          aria-label="Menu Button"
+        >
+
+          <span class="burger-bar" id="burger-bar1"></span>
+          <span class="burger-bar" id="burger-bar2"></span>
+          <span class="burger-bar" id="burger-bar3"></span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Mobile Menu -->
+
+    <div class="mobiletogglemenu" id="mobiletogglemenu">
+
+      <ul
+        class="mobile-navbar-tabs-ul"
+        id="mobile-ul"
+      >
+
+        <li
+          id="home-mobile-tab"
+          class="mobile-navbar-tabs-li home activeThismobiletab"
+          onclick="hidemenubyli()"
+        >
+          <a
+            href="#home"
+            tabindex="0"
+            aria-label="Home menu button"
+          >
+            &#60;/Home&#62;
+          </a>
+        </li>
+
+        <li
+          id="aboutme-mobile-tab"
+          class="mobile-navbar-tabs-li about"
+          onclick="hidemenubyli()"
+        >
+          <a
+            href="#about"
+            aria-label="About menu button"
+          >
+            &#60;/AboutMe&#62;
+          </a>
+        </li>
+
+        <li
+          id="experience-mobile-tab"
+          class="mobile-navbar-tabs-li experience"
+          onclick="hidemenubyli()"
+        >
+          <a
+            href="#experience"
+            aria-label="Experience menu button"
+          >
+            &#60;/Experience&#62;
+          </a>
+        </li>
+
+        <li
+          id="skills-mobile-tab"
+          class="mobile-navbar-tabs-li skills"
+          onclick="hidemenubyli()"
+        >
+          <a
+            href="#skills"
+            aria-label="Skills menu button"
+          >
+            &#60;/Skills&#62;
+          </a>
+        </li>
+
+        <li
+          id="projects-mobile-tab"
+          class="mobile-navbar-tabs-li projects"
+          onclick="hidemenubyli()"
+        >
+          <a
+            href="#projects"
+            aria-label="Projects menu button"
+          >
+            &#60;/Projects&#62;
+          </a>
+        </li>
+
+        <li
+          id="contact-mobile-tab"
+          class="mobile-navbar-tabs-li contact"
+          onclick="hidemenubyli()"
+        >
+          <a
+            href="#contact"
+            aria-label="Contact menu button"
+          >
+            &#60;/Contact&#62;
+          </a>
+        </li>
+
+      </ul>
+
+    </div>
+
+    <!-- =====================================================
+         HOME
+    ====================================================== -->
+
+    <section
+      class="landing-page-container"
+      id="home"
+    >
+
+      <div class="blob"></div>
+
+      <div class="text-content">
+
+        <!-- Greeting -->
+
+        <article
+          id="hello-friend"
+          data-aos="fade-up"
+          data-aos-delay="0"
+        >
+
+          <p class="jello">H</p>
+          <p class="jello">i</p>
+          <p class="jello">,</p>
+
+          &nbsp;
+
+          <p class="jello">I</p>
+          <p class="jello">'</p>
+          <p class="jello">m</p>
+
+        </article>
+
+        <!-- Name -->
+
+        <article
+          id="name"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+
+          <p class="jello">A</p>
+          <p class="jello">r</p>
+          <p class="jello">u</p>
+          <p class="jello">n</p>
+
+          &nbsp;
+
+          <p class="jello">R</p>
+          <p class="jello">a</p>
+          <p class="jello">t</p>
+          <p class="jello">h</p>
+          <p class="jello">o</p>
+          <p class="jello">r</p>
+
+          <p class="jello">.</p>
+
+        </article>
+
+        <!-- Profession -->
+
+        <article
+          id="work"
+          data-aos="fade-up"
+          data-aos-delay="400"
+        >
+
+          <div>
+            <p class="jello">I</p>
+          </div>
+
+          <div>
+            <p class="jello">b</p>
+            <p class="jello">u</p>
+            <p class="jello">i</p>
+            <p class="jello">l</p>
+            <p class="jello">d</p>
+          </div>
+
+          <div>
+            <p class="jello">&</p>
+          </div>
+
+          <div>
+            <p class="jello">c</p>
+            <p class="jello">o</p>
+            <p class="jello">d</p>
+            <p class="jello">e</p>
+          </div>
+
+          <div>
+            <p class="jello">f</p>
+            <p class="jello">o</p>
+            <p class="jello">r</p>
+          </div>
+
+          <div>
+            <p class="jello">t</p>
+            <p class="jello">h</p>
+            <p class="jello">e</p>
+          </div>
+
+          <div>
+            <p class="jello">w</p>
+            <p class="jello">e</p>
+            <p class="jello">b</p>
+            <p class="jello">.</p>
+          </div>
+
+        </article>
+
+        <!-- Role badge -->
+
+        <div
+          class="role-badge"
+          data-aos="fade-up"
+          data-aos-delay="500"
+        >
+
+          <span class="role-dot"></span>
+
+          Full Stack Developer · MERN · Next.js
+
+        </div>
+
+        <!-- Intro -->
+
+        <p
+          id="info-para"
+          data-aos="fade-up"
+          data-aos-delay="600"
+        >
+
+          I'm a Full Stack Developer who builds modern,
+          responsive and user-friendly web applications —
+          from clean React interfaces to secure Node.js APIs
+          and database design.
+
+          <br />
+          <br />
+
+          I work with React, Next.js, TypeScript, Node.js,
+          Express and MongoDB, and enjoy turning ideas into
+          scalable products with meaningful user experience.
+
+        </p>
+
+        <!-- Quick stats -->
+
+        <div
+          class="hero-stats"
+          data-aos="fade-up"
+          data-aos-delay="700"
+        >
+
+          <div class="stat">
+            <span class="stat-num" data-count="3">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Internships / Roles</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-num" data-count="6">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-num">9.75</span>
+            <span class="stat-label">CGPA</span>
+          </div>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div
+          class="contact-btn-div"
+          data-aos="fade-up"
+          data-aos-delay="800"
+        >
+
+          <a
+            href="mailto:arun.rathor124@gmail.com"
+            tabindex="-1"
+          >
+
+            <button class="letsTalkBtn">
+
+              <p class="letsTalkBtn-text">
+                Let's Talk!
+              </p>
+
+              <span class="letsTalkBtn-BG"></span>
+
+            </button>
+
+          </a>
+
+          <a
+            href="#projects"
+            class="ghost-btn"
+            aria-label="View my projects"
+          >
+            View Projects →
+          </a>
+
+          <!-- Settings -->
+
+          <div
+            class="setting-container"
+            id="setting-container"
+          >
+
+            <input
+              type="checkbox"
+              id="switchforsetting"
+              onclick="settingtoggle()"
+            />
+
+            <label
+              for="switchforsetting"
+              class="needtobeinvert"
+              id="labelforsetting"
+              tabindex="0"
+              aria-label="settings for sound and appearance"
+            ></label>
+
+            <div
+              class="visualmodetogglebuttoncontainer"
+              id="visualmodetogglebuttoncontainer"
+            >
+
+              <input
+                type="checkbox"
+                id="switchforvisualmode"
+                onclick="visualmode()"
+              />
+
+              <label
+                for="switchforvisualmode"
+                id="labelforvisualmode"
+                tabindex="0"
+                aria-label="switch appearance"
+              ></label>
+
+            </div>
+
+            <div
+              class="soundtogglebuttoncontainer"
+              id="soundtogglebuttoncontainer"
+            >
+
+              <input
+                type="checkbox"
+                id="switchforsound"
+                onclick="playpause()"
+              />
+
+              <label
+                for="switchforsound"
+                id="labelforsound"
+                tabindex="0"
+                aria-label="switch sound"
+                class="needtobeinvert"
+              ></label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         ABOUT
+    ====================================================== -->
+
+    <section
+      class="about-section-container"
+      id="about"
+      data-aos="fade-up"
+    >
+
+      <div class="about-section">
+
+        <div class="section-heading">
+
+          <h2
+            class="section-heading-article"
+            tabindex="0"
+            aria-label="About me heading"
+          >
+            &#60;/AboutMe&#62;
+          </h2>
+
+          <p class="sectionHeadingP"></p>
+
+        </div>
+
+        <div class="info-dp-section">
+
+          <div class="about-info">
+
+            <p tabindex="0">
+
+              Hi! I'm Arun Rathor, a Full Stack Developer
+              who loves building modern web applications
+              and solving real-world problems through technology.
+
+            </p>
+
+            <br />
+
+            <p tabindex="0">
+
+              I come from a MERN stack background and now
+              work extensively with React, Next.js and TypeScript
+              to build scalable, production-focused applications.
+
+            </p>
+
+            <br />
+
+            <p tabindex="0">
+
+              I enjoy owning products end to end — responsive
+              interfaces, reusable components, REST APIs,
+              databases, authentication and role-based access.
+
+            </p>
+
+            <br />
+
+            <p tabindex="0">
+
+              Right now I'm focused on stronger application
+              architecture, Next.js, TypeScript, multi-tenant
+              SaaS patterns and overall software engineering skills.
+
+            </p>
+
+            <!-- Education + highlights -->
+
+            <div class="about-cards">
+
+              <div class="about-card">
+
+                <span class="about-card-icon">🎓</span>
+
+                <div>
+                  <h4>B.Tech in Computer Science (AI)</h4>
+                  <p>Lingaya's Vidyapeeth, Faridabad · 2021 – 2026 · CGPA 9.75/10</p>
+                </div>
+
+              </div>
+
+              <div class="about-card">
+
+                <span class="about-card-icon">🏆</span>
+
+                <div>
+                  <h4>College Hackathon</h4>
+                  <p>2nd Runner-Up among 40+ participating teams</p>
+                </div>
+
+              </div>
+
+            </div>
+
+            <!-- Resume -->
+
+            <button
+              class="resume-btn"
+              id="resume-btn"
+              onclick="openURL()"
+            >
+
+              <div class="sign">
+
+                <svg viewBox="0 0 640 512">
+
+                  <path
+                    d="M144 480C64.5 480 0 415.5 0 336c0-62.8 40.2-116.2 96.2-135.9c-.1-2.7-.2-5.4-.2-8.1c0-88.4 71.6-160 160-160c59.3 0 111 32.2 138.7 80.2C409.9 102 428.3 96 448 96c53 0 96 43 96 96c0 12.2-2.3 23.8-6.4 34.6C596 238.4 640 290.1 640 352c0 70.7-57.3 128-128 128H144zm79-167l80 80c9.4 9.4 24.6 9.4 33.9 0l80-80c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-39 39V184c0-13.3-10.7-24-24-24s-24 10.7-24 24V318.1l-39-39c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9z"
+                  />
+
+                </svg>
+
+              </div>
+
+              <div class="text">
+                Resume
+              </div>
+
+            </button>
+
+          </div>
+
+          <!-- Profile Image -->
+
+          <div
+            class="dp"
+            data-aos="fade-up"
+          >
+
+            <!-- Replace this image later with your own profile photo -->
+
+            <img
+              src="src/webp/Arun.png"
+              alt="Arun Rathor profile"
+              tabindex="0"
+              aria-label="Image of Arun Rathor"
+            />
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         EXPERIENCE
+    ====================================================== -->
+
+    <section
+      class="experience-section-container"
+      id="experience"
+    >
+
+      <div class="experience-section">
+
+        <div
+          class="section-heading"
+          data-aos="fade-up"
+        >
+
+          <h2
+            class="section-heading-article"
+            tabindex="0"
+            aria-label="Experience heading"
+          >
+            &#60;/Experience&#62;
+          </h2>
+
+          <p class="sectionHeadingP"></p>
+
+        </div>
+
+        <div class="timeline">
+
+          <!-- VidyaVriddhi -->
+
+          <div
+            class="timeline-item"
+            data-aos="fade-up"
+          >
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+              <div class="timeline-head">
+
+                <h3>Full Stack Developer</h3>
+
+                <!-- TODO: add exact dates, e.g. "Aug 2026 – Present" -->
+                <span class="timeline-date">Present</span>
+
+              </div>
+
+              <p class="timeline-company">VidyaVriddhi</p>
+
+              <ul>
+                <li>Building frontend interfaces and admission flows for an education &amp; admission platform.</li>
+                <li>Integrating college, course and exam data with APIs and database-driven features.</li>
+                <li>Developing modern, responsive experiences with Next.js, React and Node.js.</li>
+              </ul>
+
+              <div class="tag-chips">
+                <span>Next.js</span>
+                <span>React</span>
+                <span>Node.js</span>
+                <span>MongoDB</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Paytel -->
+
+          <div
+            class="timeline-item"
+            data-aos="fade-up"
+          >
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+              <div class="timeline-head">
+
+                <h3>Node.js Developer Intern</h3>
+
+                <span class="timeline-date">Mar 2026 – Jul 2026</span>
+
+              </div>
+
+              <p class="timeline-company">Paytel Financial Technologies, Faridabad</p>
+
+              <ul>
+                <li>Built responsive business websites and full-stack apps with React, Node.js, Express and MongoDB.</li>
+                <li>Developed Cloudedata — a hosting platform (WordPress, VPS, Business Email) with customer and admin dashboards.</li>
+                <li>Implemented JWT auth, role-based access control, protected routes and lead-management workflows.</li>
+              </ul>
+
+              <div class="tag-chips">
+                <span>Node.js</span>
+                <span>Express</span>
+                <span>JWT</span>
+                <span>RBAC</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- NHPC -->
+
+          <div
+            class="timeline-item"
+            data-aos="fade-up"
+          >
+
+            <span class="timeline-dot"></span>
+
+            <div class="timeline-card">
+
+              <div class="timeline-head">
+
+                <h3>Software Development Intern</h3>
+
+                <span class="timeline-date">Jul 2025 – Aug 2025</span>
+
+              </div>
+
+              <p class="timeline-company">NHPC Limited, Faridabad</p>
+
+              <ul>
+                <li>Developed an internal electricity-generation reporting portal using the MERN stack.</li>
+                <li>Built responsive UIs and REST APIs to manage daily generation data with role-based access.</li>
+                <li>Added input validation and protected workflows to improve internal reporting reliability.</li>
+              </ul>
+
+              <div class="tag-chips">
+                <span>React</span>
+                <span>Express</span>
+                <span>MongoDB</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         SKILLS
+    ====================================================== -->
+
+    <section
+      class="skills-section-container"
+      id="skills"
+    >
+
+      <div class="skills-section">
+
+        <div
+          class="section-heading"
+          data-aos="fade-up"
+        >
+
+          <h2
+            class="section-heading-article"
+            tabindex="0"
+            aria-label="Skills heading"
+          >
+            &#60;/Skills&#62;
+          </h2>
+
+          <p class="sectionHeadingP"></p>
+
+        </div>
+
+        <div class="frontend-dev-section">
+
+          <h3
+            class="frontend-dev-heading"
+            data-aos="fade-up"
+            tabindex="0"
+            aria-label="Arun Rathor technology stack"
+          >
+            Tech Stack
+          </h3>
+
+          <ul class="tech-stack-wrapper">
+
+            <!-- HTML -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/htmllogo.png"
+                alt="HTML"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                HTML
+              </span>
+
+            </li>
+
+            <!-- CSS -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/csslogo.png"
+                alt="CSS"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                CSS
+              </span>
+
+            </li>
+
+            <!-- JavaScript -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/jslogo.png"
+                alt="JavaScript"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                JAVASCRIPT
+              </span>
+
+            </li>
+
+            <!-- Tailwind -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/tailwind.png"
+                alt="Tailwind CSS"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                TAILWIND CSS
+              </span>
+
+            </li>
+
+            <!-- React -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/reactlogo.png"
+                alt="React"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                REACT
+              </span>
+
+            </li>
+
+            <!-- Next -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/nextlogo.png"
+                alt="Next.js"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                NEXT.JS
+              </span>
+
+            </li>
+
+            <!-- Node -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/node.png"
+                alt="Node.js"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                NODE.JS
+              </span>
+
+            </li>
+
+            <!-- GitHub -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/githublogo.png"
+                alt="GitHub"
+                class="tech-stack-logo needtobeinvert"
+              />
+
+              <span class="tooltip">
+                GITHUB
+              </span>
+
+            </li>
+
+            <!-- Git -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/gitlogo.png"
+                alt="Git"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                GIT
+              </span>
+
+            </li>
+
+            <!-- Figma -->
+
+            <li
+              class="tech-stack-box"
+              data-aos="fade-up"
+            >
+
+              <img
+                src="./src/png/figmalogo.png"
+                alt="Figma"
+                class="tech-stack-logo"
+              />
+
+              <span class="tooltip">
+                FIGMA
+              </span>
+
+            </li>
+
+          </ul>
+
+          <!-- Skill groups -->
+
+          <div class="skill-groups">
+
+            <div
+              class="skill-group"
+              data-aos="fade-up"
+            >
+
+              <h4>Frontend</h4>
+
+              <div class="tag-chips">
+                <span>React.js</span>
+                <span>Next.js</span>
+                <span>TypeScript</span>
+                <span>JavaScript</span>
+                <span>Tailwind CSS</span>
+                <span>Bootstrap</span>
+                <span>HTML5 / CSS3</span>
+              </div>
+
+            </div>
+
+            <div
+              class="skill-group"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+
+              <h4>Backend &amp; Databases</h4>
+
+              <div class="tag-chips">
+                <span>Node.js</span>
+                <span>Express.js</span>
+                <span>REST APIs</span>
+                <span>JWT Auth</span>
+                <span>Socket.IO</span>
+                <span>WebRTC</span>
+                <span>MongoDB</span>
+                <span>MySQL</span>
+                <span>PostgreSQL</span>
+                <span>Prisma</span>
+              </div>
+
+            </div>
+
+            <div
+              class="skill-group"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+
+              <h4>Tools &amp; Concepts</h4>
+
+              <div class="tag-chips">
+                <span>Git &amp; GitHub</span>
+                <span>Postman</span>
+                <span>Linux</span>
+                <span>RBAC</span>
+                <span>API Integration</span>
+                <span>Debugging</span>
+                <span>Deployment</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         PROJECTS
+    ====================================================== -->
+
+    <section
+      class="projects-section-container"
+      id="projects"
+    >
+
+      <div class="projects-section-div">
+
+        <div
+          class="section-heading"
+          data-aos="fade-up"
+        >
+
+          <h2
+            class="section-heading-article"
+            tabindex="0"
+            aria-label="My projects"
+          >
+            &#60;/Projects&#62;
+          </h2>
+
+          <p class="sectionHeadingP"></p>
+
+        </div>
+
+        <div class="project-boxes-div">
+
+          <!-- =================================================
+               NEXORA CRM
+          ================================================== -->
+
+          <div
+            data-aos="fade-up"
+            class="project-box-wrapper"
+          >
+
+            <div class="project-box project-box2">
+
+              <div class="info-div">
+
+                <img
+                  src="src/png/nextlogo.png"
+                  alt="Nexora CRM"
+                  class="faviconforProject"
+                />
+
+                <article class="ProjectHeading">
+                  Nexora CRM
+                </article>
+
+                <p class="ProjectDescription">
+
+                  A multi-tenant SaaS CRM to manage customers,
+                  business workflows and organizational data
+                  through a modern web interface.
+
+                  <br /><br />
+
+                  Built with Next.js, TypeScript, Prisma and
+                  PostgreSQL with a focus on scalability,
+                  reusable components and clean architecture.
+
+                </p>
+
+                <div class="tag-chips">
+                  <span>Next.js</span>
+                  <span>TypeScript</span>
+                  <span>Prisma</span>
+                  <span>PostgreSQL</span>
+                </div>
+
+                <div class="project-buttons">
+
+                  <a
+                    href="https://github.com/ArunRathor09/nexora-crm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="github-redirect"
+                    aria-label="View Nexora CRM on GitHub"
+                  >
+
+                    <img
+                      src="src/svg/github.svg"
+                      alt="GitHub"
+                    />
+
+                  </a>
+
+                  <!-- Add live URL when deployed -->
+
+                </div>
+
+              </div>
+
+              <div class="image-div">
+
+                <!-- Replace with actual project screenshot -->
+
+                <img
+                  src="src/webp/Group 76.webp"
+                  alt="Nexora CRM project preview"
+                  loading="lazy"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- =================================================
+               VIDYAVRIDDHI
+          ================================================== -->
+
+          <div
+            data-aos="fade-up"
+            class="project-box-wrapper"
+          >
+
+            <div class="project-box project-box2">
+
+              <div class="info-div">
+
+                <img
+                  src="src/png/nextlogo.png"
+                  alt="VidyaVriddhi"
+                  class="faviconforProject"
+                />
+
+                <article class="ProjectHeading">
+                  VidyaVriddhi
+                </article>
+
+                <p class="ProjectDescription">
+
+                  An education and admission platform that helps
+                  students explore colleges, courses, exams and
+                  admission-related information.
+
+                  <br /><br />
+
+                  Worked on frontend interfaces, admission flows,
+                  college data integration and modern web
+                  experiences for the platform.
+
+                </p>
+
+                <div class="tag-chips">
+                  <span>Next.js</span>
+                  <span>React</span>
+                  <span>Node.js</span>
+                </div>
+
+                <div class="project-buttons">
+
+                  <!-- Add actual repository / live URL if public -->
+
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="github-redirect"
+                    aria-label="View VidyaVriddhi project"
+                  >
+
+                    <img
+                      src="src/svg/github.svg"
+                      alt="GitHub"
+                    />
+
+                  </a>
+
+                </div>
+
+              </div>
+
+              <div class="image-div">
+
+                <!-- TODO: replace with a real VidyaVriddhi screenshot (this was the Netflix clone image) -->
+
+                <img
+                  src="src/webp/NetflixCloneProject.webp"
+                  alt="VidyaVriddhi project preview"
+                  loading="lazy"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- =================================================
+               SANGAMX
+          ================================================== -->
+
+          <div
+            data-aos="fade-up"
+            class="project-box-wrapper"
+          >
+
+            <div class="project-box project-box2">
+
+              <div class="info-div">
+
+                <img
+                  src="src/png/reactlogo.png"
+                  alt="SangamX"
+                  class="faviconforProject"
+                />
+
+                <article class="ProjectHeading">
+                  SangamX
+                </article>
+
+                <p class="ProjectDescription">
+
+                  A full-stack event booking platform built as
+                  a practical MERN/Next.js project.
+
+                  <br /><br />
+
+                  Covers event discovery, booking workflows,
+                  API integration and database-driven
+                  application development.
+
+                </p>
+
+                <div class="tag-chips">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>MongoDB</span>
+                </div>
+
+                <div class="project-buttons">
+
+                  <!-- Add GitHub URL -->
+
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="github-redirect"
+                    aria-label="View SangamX on GitHub"
+                  >
+
+                    <img
+                      src="src/svg/github.svg"
+                      alt="GitHub"
+                    />
+
+                  </a>
+
+                </div>
+
+              </div>
+
+              <div class="image-div">
+
+                <img
+                  src="src/webp/AXOCEAN-project.webp"
+                  alt="SangamX project preview"
+                  loading="lazy"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- =================================================
+               NEXT.JS PROJECT
+          ================================================== -->
+
+          <div
+            data-aos="fade-up"
+            class="project-box-wrapper"
+          >
+
+            <div class="project-box project-box2">
+
+              <div class="info-div">
+
+                <img
+                  src="src/png/nextlogo.png"
+                  alt="Next.js Project"
+                  class="faviconforProject"
+                />
+
+                <article class="ProjectHeading">
+                  Next.js Applications
+                </article>
+
+                <p class="ProjectDescription">
+
+                  A collection of practical Next.js projects
+                  built while exploring App Router, routing,
+                  server and client components, data fetching,
+                  authentication and modern application patterns.
+
+                </p>
+
+                <div class="tag-chips">
+                  <span>Next.js</span>
+                  <span>App Router</span>
+                  <span>Auth</span>
+                </div>
+
+                <div class="project-buttons">
+
+                  <a
+                    href="https://github.com/ArunRathor09"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="github-redirect"
+                    aria-label="View Arun Rathor GitHub"
+                  >
+
+                    <img
+                      src="src/svg/github.svg"
+                      alt="GitHub"
+                    />
+
+                  </a>
+
+                </div>
+
+              </div>
+
+              <div class="image-div">
+
+                <img
+                  src="src/webp/notesync-preview.webp"
+                  alt="Next.js projects preview"
+                  loading="lazy"
+                />
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- More projects (compact cards, no images needed) -->
+
+        <h3
+          class="more-projects-heading"
+          data-aos="fade-up"
+        >
+          More Projects
+        </h3>
+
+        <div class="mini-projects">
+
+          <div
+            class="mini-project"
+            data-aos="fade-up"
+          >
+
+            <h4>TradeSphere</h4>
+
+            <p>
+              MERN stock trading platform with watchlists,
+              portfolio tracking, simulated buy/sell orders
+              and transaction history.
+            </p>
+
+            <div class="tag-chips">
+              <span>React</span>
+              <span>Express</span>
+              <span>MongoDB</span>
+              <span>JWT</span>
+            </div>
+
+          </div>
+
+          <div
+            class="mini-project"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+
+            <h4>MeetSphere</h4>
+
+            <p>
+              Real-time video conferencing with meeting rooms,
+              live chat, screen sharing and peer-to-peer video.
+            </p>
+
+            <div class="tag-chips">
+              <span>WebRTC</span>
+              <span>Socket.IO</span>
+              <span>MERN</span>
+            </div>
+
+          </div>
+
+          <div
+            class="mini-project"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+
+            <h4>ARUVA</h4>
+
+            <p>
+              Hotel booking platform with authentication,
+              hotel search, room availability and
+              reservation management.
+            </p>
+
+            <div class="tag-chips">
+              <span>React</span>
+              <span>Express</span>
+              <span>MongoDB</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section
+      class="contact-section-container"
+      id="contact"
+    >
+
+      <div
+        class="contact-section"
+        data-aos="fade-up"
+      >
+
+        <div class="section-heading">
+
+          <h2
+            class="section-heading-article"
+            tabindex="0"
+            aria-label="Contact heading"
+          >
+            &#60;/Contact&#62;
+          </h2>
+
+          <p class="sectionHeadingP"></p>
+
+        </div>
+
+        <p class="contact-lead">
+
+          Have a project, an internship or a full-time
+          opportunity in mind? My inbox is always open —
+          I usually reply within a day.
+
+        </p>
+
+        <div class="contact-actions">
+
+          <a
+            class="contact-primary"
+            href="mailto:arun.rathor124@gmail.com"
+          >
+            arun.rathor124@gmail.com
+          </a>
+
+          <a
+            class="ghost-btn"
+            href="https://www.linkedin.com/in/arun-rathor-08493a331"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+
+          <a
+            class="ghost-btn"
+            href="https://github.com/ArunRathor09"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer id="footer">
+
+    <button
+      class="fas"
+      id="backtotopbutton"
+      onclick="scrolltoTopfunction()"
+    >
+
+      <article aria-label="Back to top">
+        &#8592; BACK TO TOP
+      </article>
+
+    </button>
+
+    <div class="footer-background">
+
+      <div class="footer-blob"></div>
+
+    </div>
+
+    <div class="footer-foreground">
+
+      <div class="footercontainer">
+
+        <!-- Quote -->
+
+        <div class="two-words">
+
+          <article
+            tabindex="0"
+            aria-label="Arun Rathor portfolio quote"
+          >
+            "Build. Learn. Improve. Repeat."
+          </article>
+
+        </div>
+
+        <!-- Social Links -->
+
+        <div class="social-media-container">
+
+          <div class="getintouch-heading">
+            <article>
+              GetinTouch();
+            </article>
+          </div>
+
+          <div class="logos">
+
+            <!-- LinkedIn (fixed: proper https link, no markdown) -->
+
+            <a
+              href="https://www.linkedin.com/in/arun-rathor-08493a331"
+              target="_blank"
+              rel="noopener noreferrer"
+              tabindex="0"
+              aria-label="Arun Rathor LinkedIn"
+            >
+
+              <svg
+                class="SocialHandle"
+                viewBox="0 0 448 512"
+              >
+
+                <path
+                  d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+                />
+
+              </svg>
+
+            </a>
+
+            <!-- GitHub -->
+
+            <a
+              href="https://github.com/ArunRathor09"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Arun Rathor GitHub"
+            >
+
+              <svg
+                viewBox="0 0 496 512"
+                class="SocialHandle"
+              >
+
+                <path
+                  d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8z"
+                />
+
+              </svg>
+
+            </a>
+
+            <!-- Email -->
+
+            <a
+              href="mailto:arun.rathor124@gmail.com"
+              aria-label="Email Arun Rathor"
+            >
+
+              <svg
+                id="GmailLogo"
+                viewBox="0 0 512 512"
+              >
+
+                <path
+                  d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"
+                />
+
+              </svg>
+
+            </a>
+
+          </div>
+
+        </div>
+
+        <!-- Footer Avatar -->
+
+        <div class="footer-avatar-container">
+
+          <img
+            src="src/png/footer-avatar-vinod.png"
+            alt="Arun Rathor"
+            class="footer-avatar-img"
+            id="footer-wala-avatar"
+          />
+
+          <div class="footer-avatar-face">
+
+            <div class="footer-avatar-eye footer-left-eye">
+              <div class="footer-pupil"></div>
+            </div>
+
+            <div class="footer-avatar-eye footer-right-eye">
+              <div class="footer-pupil"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Copyright -->
+
+        <div class="footer-bottom">
+
+          <article>
+
+            Designed &amp; Built by Arun Rathor
+            &#169;
+            <span id="current-year"></span>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- ================= SCRIPTS ================= -->
+
+  <script src="main.js"></script>
+
+  <!-- AOS -->
+
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 60
+    });
+  </script>
+
+  <!-- Resume -->
+
+  <script>
+
+    function openURL() {
+
+      /*
+       * IMPORTANT:
+       * Put your resume inside:
+       *
+       * src/pdf/
+       *
+       * Example:
+       * src/pdf/Arun-Rathor-Resume.pdf
+       */
+
+      var url = "src/pdf/Arun-Rathor-Resume.pdf";
+
+      window.open(url, "_blank", "noopener");
+
+    }
+
+  </script>
+
+  <!-- Cursor -->
+
+  <script>
+
+    const cursorInner =
+      document.getElementById("cursor-inner");
+
+    const cursorOuter =
+      document.getElementById("cursor-outer");
+
+    const links =
+      document.querySelectorAll("a,label,button");
+
+    document.addEventListener(
+      "mousemove",
+      function (e) {
+
+        const posX = e.clientX;
+        const posY = e.clientY;
+
+        cursorInner.style.left =
+          `${posX}px`;
+
+        cursorInner.style.top =
+          `${posY}px`;
+
+        cursorOuter.animate(
+          {
+            left: `${posX}px`,
+            top: `${posY}px`,
+          },
+          {
+            duration: 500,
+            fill: "forwards"
+          }
+        );
+
+      }
+    );
+
+    links.forEach((link) => {
+
+      link.addEventListener(
+        "mouseenter",
+        () => {
+
+          cursorInner.classList.add("hover");
+          cursorOuter.classList.add("hover");
+
+        }
+      );
+
+      link.addEventListener(
+        "mouseleave",
+        () => {
+
+          cursorInner.classList.remove("hover");
+          cursorOuter.classList.remove("hover");
+
+        }
+      );
+
+    });
+
+  </script>
+
+  <!-- Current Year -->
+
+  <script>
+
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+
+  </script>
+
+  <!-- Enhancements: scroll progress, count-up stats, nav highlight -->
+
+  <script>
+
+    (function () {
+
+      // 1) Scroll progress bar
+      const bar = document.getElementById("scroll-progress");
+
+      function updateProgress() {
+
+        if (!bar) return;
+
+        const h = document.documentElement;
+        const total = h.scrollHeight - h.clientHeight;
+
+        bar.style.width =
+          total > 0
+            ? (h.scrollTop / total) * 100 + "%"
+            : "0%";
+
+      }
+
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      updateProgress();
+
+      // 2) Count-up for hero stats (runs once when visible)
+      const counters = document.querySelectorAll(".stat-num[data-count]");
+
+      if ("IntersectionObserver" in window && counters.length) {
+
+        const io = new IntersectionObserver((entries, obs) => {
+
+          entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) return;
+
+            const el = entry.target;
+            const target = parseInt(el.dataset.count, 10) || 0;
+
+            let current = 0;
+            const step = Math.max(1, Math.ceil(target / 30));
+
+            const timer = setInterval(() => {
+
+              current += step;
+
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+
+              el.textContent = current;
+
+            }, 40);
+
+            obs.unobserve(el);
+
+          });
+
+        }, { threshold: 0.6 });
+
+        counters.forEach((c) => io.observe(c));
+
+      } else {
+
+        counters.forEach((c) => (c.textContent = c.dataset.count));
+
+      }
+
+      // 3) Highlight active nav tab (works for experience / contact too)
+      const sections = ["home", "about", "experience", "skills", "projects", "contact"]
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
+
+      function setActive(id) {
+
+        document.querySelectorAll(".navbar-tabs-li").forEach((li) => {
+          li.classList.toggle("activeThistab", li.classList.contains(id));
+        });
+
+        document.querySelectorAll(".mobile-navbar-tabs-li").forEach((li) => {
+          li.classList.toggle("activeThismobiletab", li.classList.contains(id));
+        });
+
+      }
+
+      if ("IntersectionObserver" in window) {
+
+        const spy = new IntersectionObserver((entries) => {
+
+          entries.forEach((e) => {
+            if (e.isIntersecting) setActive(e.target.id);
+          });
+
+        }, { rootMargin: "-40% 0px -55% 0px" });
+
+        sections.forEach((s) => spy.observe(s));
+
+      }
+
+    })();
+
+  </script>
+
+</body>
+
+</html>
